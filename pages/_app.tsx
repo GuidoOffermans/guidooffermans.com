@@ -9,7 +9,7 @@ const MyApp = ( { Component, pageProps }: AppProps ) => {
 		const style = document.getElementById( "server-side-styles" );
 
 		if ( style ) {
-			style.parentNode.removeChild( style );
+			style.parentNode?.removeChild( style );
 		}
 	}, [] );
 

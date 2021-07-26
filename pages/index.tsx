@@ -19,10 +19,10 @@ function Home( { posts } ) {
 				/>
 			</Head>
 
-			{/* <main> */}
+			<main>
 				<h1>Guido Offermans</h1>
 				{/* {posts?.map( ( post: any, i: number ) => <p key={i}>{post.title}</p> )} */}
-			{/* </main> */}
+			</main>
 
 			<footer />
 		</>
