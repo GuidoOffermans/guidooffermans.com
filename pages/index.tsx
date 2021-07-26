@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 function Home( { posts } ) {
 	// console.log(posts)
 	return (
-		<div className={styles.container}>
+		<>
 			<Head>
 				<title>Create Next App</title>
 				<meta
@@ -19,32 +19,36 @@ function Home( { posts } ) {
 				/>
 			</Head>
 
-			<main className={styles.main}>
-				{posts.map( ( post: any, i: number ) => <p key={i}>{post.title}</p> )}
-			</main>
+			{/* <main> */}
+				<h1>Guido Offermans</h1>
+				{/* {posts?.map( ( post: any, i: number ) => <p key={i}>{post.title}</p> )} */}
+			{/* </main> */}
 
-			<footer className={styles.footer} />
-		</div>
+			<footer />
+		</>
 	);
 }
 
 
-export async function getStaticProps() {
-	const res = await fetch( "http://localhost:3100/api/posts" );
-	const data = await res.json();
-	const posts = data.docs;
+// export const getStaticProps = async () => {
+// 	const res   = await fetch( "http://localhost:3100/api/posts" );
+// 	console.log( res );
+// 	const data  = await res.json();
+// 	console.log( "data", data );
 
-	console.log( "posts", posts );
+// 	const posts = data?.docs;
 
-	if ( !posts ) {
-		return {
-			notFound: true,
-		};
-	}
+// 	console.log( "posts", posts );
 
-	return {
-		props: { posts },
-	};
-}
+// 	if ( ! posts ) {
+// 		return {
+// 			notFound: true,
+// 		};
+// 	}
+
+// 	return {
+// 		props: { posts },
+// 	};
+// };
 
 export default Home;
