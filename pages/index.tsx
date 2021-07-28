@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import GridContainer from "../components/layout/GridContainer";
 
 function Home( { posts } ) {
 	// console.log(posts)
@@ -20,8 +21,10 @@ function Home( { posts } ) {
 			</Head>
 
 			<main>
-				<h1>Guido Offermans</h1>
-				{/* {posts?.map( ( post: any, i: number ) => <p key={i}>{post.title}</p> )} */}
+				<GridContainer>
+					<h1>Guido Offermans</h1>
+					{/* {posts?.map( ( post: any, i: number ) => <p key={i}>{post.title}</p> )} */}
+				</GridContainer>
 			</main>
 
 			<footer />

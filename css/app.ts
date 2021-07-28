@@ -1,9 +1,9 @@
 import { createUseStyles } from "react-jss";
 
-import {htmlFontSize, baselinePX, base} from "./base";
+import { htmlFontSize, baselinePX, base } from "./base";
 import colors from "./colors";
 import { h1, h2, h3, body} from "./type";
-
+import queries from "./queries";
 
 export default createUseStyles( {
 	"@global": {
@@ -19,6 +19,9 @@ export default createUseStyles( {
 			background: "rgb(19, 19, 21)",
 			fontSize: htmlFontSize,
 			lineHeight: `${baselinePX}px`,
+			[queries.m]: {
+				fontSize: htmlFontSize * 0.75,
+			}
 		},
 		h1,
 		h2,
