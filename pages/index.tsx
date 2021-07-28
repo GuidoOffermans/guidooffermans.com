@@ -3,9 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import GridContainer from "../components/layout/GridContainer";
+import { Cell, Grid } from "@faceless-ui/css-grid";
 
 function Home( { posts } ) {
-	// console.log(posts)
+
 	return (
 		<>
 			<Head>
@@ -22,8 +23,12 @@ function Home( { posts } ) {
 
 			<main>
 				<GridContainer>
-					<h1>Guido Offermans</h1>
-					{/* {posts?.map( ( post: any, i: number ) => <p key={i}>{post.title}</p> )} */}
+					<Grid>
+						<Cell cols={12}>
+							<h1>Guido Offermans</h1>
+						</Cell>
+						
+					</Grid>
 				</GridContainer>
 			</main>
 

@@ -30,8 +30,8 @@ const MyApp: FC<AppProps> = ( { Component, pageProps }: AppProps ): ReactElement
 		
 		<GridProvider
 			cols={{
-				s: 10,
-				m: 10,
+				s: 8,
+				m: 8,
 				l: 12,
 				xl: 12,
 			}}
