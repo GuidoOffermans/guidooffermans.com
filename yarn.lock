@@ -88,6 +88,18 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@faceless-ui/css-grid@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@faceless-ui/css-grid/-/css-grid-1.0.2.tgz#0e4438922855fa1e8c7aa20e8e74f7a87da12d31"
+  integrity sha512-9rWC/sBm64Um0yJ1jrLYXHW1Izu0SEzf35Ee4+UO0c+RnKiiRmNanrGEpzOo1OwF5caQ/CSwMGkUene+jG5Nkg==
+  dependencies:
+    "@faceless-ui/window-info" "^2.0.1"
+
+"@faceless-ui/window-info@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@faceless-ui/window-info/-/window-info-2.0.1.tgz#2462ee5416d796e8ed46b634c0732e37bdd38a98"
+  integrity sha512-ax0w2lJVPSpMjGIZJznyXmnbFnDWfSgwYT45BCS7MlOGl9wJfFSlfWyn8UWWxCaghhUuH9SoDLNL0LQ575ygmg==
+
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"
