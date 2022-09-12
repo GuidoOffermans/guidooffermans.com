@@ -1,9 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import DarkSide from '../components/DarkSide.astro';
+import LightSide from '../components/LightSide.astro';
 ---
 
 <Layout title="Welcome to Astro.">
-	<main class="flex font-bold">
-		<h1>Guido Offermans</h1>
+	<main class="flex">
+		<LightSide/>
+		<DarkSide/>
 	</main>
 </Layout>
