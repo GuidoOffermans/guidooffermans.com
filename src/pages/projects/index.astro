@@ -1,0 +1,17 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import BasicLayout from "../../layouts/BasicLayout.astro";
+import ProjectListing from "../../components/ProjectListing.astro";
+import ListingSection from "../../components/ListingSection.astro";
+
+const projects = (await getCollection("projects")).sort(
+    (a, b) => a.data.listNumber - b.data.listNumber,
+);
+---
+
+<BasicLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <ListingSection title="Projects" type="project">
+        {projects?.map((project) => <ProjectListing project={project} />)}
+    </ListingSection>
+</BasicLayout>

@@ -1,0 +1,22 @@
+---
+interface Props {
+    date: Date;
+    type?: "work" | "date";
+}
+
+const { date, type = "date" } = Astro.props;
+---
+
+<time class="inline" datetime={date.toISOString()}>
+    {
+        type === "work"
+            ? date.toLocaleDateString("en-us", {
+                  year: "numeric",
+              })
+            : date.toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "short",
+                  day: "2-digit",
+              })
+    }
+</time>

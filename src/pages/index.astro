@@ -1,0 +1,99 @@
+---
+import { getCollection } from "astro:content";
+import BasicLayout from "./../layouts/BasicLayout.astro";
+import PostListing from "../components/PostListing.astro";
+import WorkListing from "../components/WorkListing.astro";
+import ProjectListing from "../components/ProjectListing.astro";
+import ListingSection from "../components/ListingSection.astro";
+
+const posts = (await getCollection("blog"))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+
+const work = (await getCollection("work")).sort(
+    (a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf(),
+);
+
+const projects = (await getCollection("projects")).sort(
+    (a, b) => a.data.listNumber - b.data.listNumber,
+);
+---
+
+<BasicLayout>
+    <section
+        class="flex flex-col gap-0 text-2xl md:text-5xl font-wght-750 tracking-[0.04em] leading-[35px]"
+    >
+        <h1>Hi! I’m Guido Offermans. A full-stack engineer.</h1>
+        <p class="text-go-yellow">
+            <a href="mailto:dev@guidooffermans.com">Contact me!</a>
+        </p>
+        <p>
+            Find me on <a
+                class="text-go-purple"
+                href="https://www.linkedin.com/in/guido-offermans"
+                target="_blank">LinkedIn</a
+            > or
+            <a
+                class="text-go-darkblue"
+                href="https://github.com/GuidoOffermans"
+                target="_blank">Github</a
+            >.
+        </p>
+        <p>More info <a class="text-go-orange" href="/about">about me</a>.</p>
+        <p>
+            See my <a class="text-go-green" href="/projects">recent projects</a
+            >.
+        </p>
+        <p>
+            Read my latest <a class="text-go-blue" href="/blog">blog</a> posts.
+        </p>
+    </section>
+
+    {
+        work.length ? (
+            <ListingSection
+                class="mt-20 md:mt-40"
+                title="Recent work"
+                link="/about"
+                linkTitle="See all work"
+                type="work"
+            >
+                {work?.map((w) => (
+                    <WorkListing work={w} />
+                ))}
+            </ListingSection>
+        ) : null
+    }
+
+    {
+        projects.length ? (
+            <ListingSection
+                class="mt-10 md:mt-20"
+                title="Recent Projects"
+                link="/projects"
+                linkTitle="See all projects"
+                type="project"
+            >
+                {projects?.map((project) => (
+                    <ProjectListing project={project} />
+                ))}
+            </ListingSection>
+        ) : null
+    }
+
+    {
+        projects.length ? (
+            <ListingSection
+                class="mt-10 md:mt-20"
+                title="Latest Articles"
+                link="/blog"
+                linkTitle="See all posts"
+                type="post"
+            >
+                {posts?.map((post) => (
+                    <PostListing post={post} />
+                ))}
+            </ListingSection>
+        ) : null
+    }
+</BasicLayout>

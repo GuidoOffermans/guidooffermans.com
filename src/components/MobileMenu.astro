@@ -1,0 +1,30 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<div
+    x-show="expanded"
+    id="mobile-menu"
+    class="mx-auto w-full max-w-3xl"
+    role="dialog"
+    aria-modal="true"
+>
+    <div class="fixed inset-0 top-16 z-10 opacity-50"></div>
+    <div
+        class="fixed top-16 z-10 size-full max-w-3xl bg-white p-6
+     dark:bg-go-dark dark:text-white"
+    >
+        <div
+            class="flex flex-col gap-2 font-wght-750 tracking-[0.04em] leading-[35px] text-2xl"
+        >
+            <HeaderLink class="" href="/">Home</HeaderLink>
+            <HeaderLink class="text-go-green" href="/projects">
+                Projects
+            </HeaderLink>
+            <HeaderLink class="text-go-blue" href="/blog">Blog</HeaderLink>
+            <HeaderLink class="text-go-orange" href="/about">
+                About
+            </HeaderLink>
+        </div>
+    </div>
+</div>

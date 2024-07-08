@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+    project: CollectionEntry<"projects">;
+}
+
+import FormattedDate from "./FormattedDate.astro";
+const { project } = Astro.props;
+---
+
+<li
+    class="font-mono recursive text-xs md:text-xl tracking-[0.09em] md:tracking-[0.08em] leading-[18px] md:leading-[30px] uppercase"
+>
+    <strong class="font-normal text-go-green">
+        <a href={`/projects/${project?.slug}/`}>{project.data.title}</a>
+    </strong>–
+    <span>{project.data.description}.</span>
+    <span class="whitespace-normal inline-block tracking-0">
+        <FormattedDate type="work" date={project.data.workedOn} />
+    </span>
+</li>

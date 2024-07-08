@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Recursive';
+        src: url('/fonts/Recursive.woff2') format('woff2');
+        font-weight: 300 900;
+        font-display: block;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 750;
+        font-display: block;
+        src: url('/fonts/PublicSans.ttf') format('truetype');
+    }
+}

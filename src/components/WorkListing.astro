@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+    work: CollectionEntry<"work">;
+}
+
+import FormattedDate from "./FormattedDate.astro";
+const { work } = Astro.props;
+---
+
+<li
+    class="font-mono recursive text-xs md:text-xl tracking-[0.09em] md:tracking-[0.08em] leading-[18px] md:leading-[30px] uppercase"
+>
+    <strong class="font-normal text-go-orange">
+        <a href={`/work/${work?.slug}/`}>{work.data.companyName}</a>
+    </strong>–
+    <span>{work.data.role} {work.data.description}.</span>
+    <span class="whitespace-normal inline-block tracking-0">
+        <FormattedDate type="work" date={work.data.startDate} />-
+        <FormattedDate type="work" date={work.data.endDate} />
+    </span>
+</li>

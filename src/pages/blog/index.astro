@@ -1,0 +1,17 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import BasicLayout from "../../layouts/BasicLayout.astro";
+import PostListing from "../../components/PostListing.astro";
+import ListingSection from "../../components/ListingSection.astro";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BasicLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <ListingSection title="Blog Posts" type="post">
+        {posts?.map((post) => <PostListing post={post} />)}
+    </ListingSection>
+</BasicLayout>

@@ -1,0 +1,17 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import BasicLayout from "../../layouts/BasicLayout.astro";
+import WorkListing from "../../components/WorkListing.astro";
+import ListingSection from "../../components/ListingSection.astro";
+
+const work = (await getCollection("work")).sort(
+    (a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf(),
+);
+---
+
+<BasicLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <ListingSection title="Recent work" type="work">
+        {work?.map((w) => <WorkListing work={w} />)}
+    </ListingSection>
+</BasicLayout>

@@ -1,0 +1,35 @@
+---
+interface Props {
+    title: string;
+    link?: string;
+    linkTitle?: string;
+    class?: string;
+    type: "work" | "project" | "post";
+}
+
+const { title, link, linkTitle, class: className, type } = Astro.props;
+---
+
+<section class:list={[className]}>
+    <h3
+        class="text-xl md:text-3xl font-wght-750 tracking-[0.04em] leading-8 md:leading-9"
+    >
+        {title}
+    </h3>
+    <ul class:list={["flex flex-col mt-2", { "gap-5": type !== "post" }]}>
+        <slot />
+    </ul>
+    {
+        link ? (
+            <>
+                <br />
+                <a
+                    class="font-mono recursive text-xs md:text-xl tracking-[0.09em] md:tracking-[0.08em] leading-[18px] md:leading-[30px] uppercase underline"
+                    href={link}
+                >
+                    {linkTitle}
+                </a>
+            </>
+        ) : null
+    }
+</section>

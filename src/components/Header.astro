@@ -1,0 +1,36 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import IconMenu from "./icons/IconMenu.astro";
+import IconCross from "./icons/IconCross.astro";
+---
+
+<header
+    class="mx-auto mb-16 flex max-h-16 w-full max-w-3xl px-4 pt-2 items-center"
+>
+    <nav class="flex grow-0 h-8 w-full items-center justify-between">
+        <h2 class="text-2xl"><a href="/">{SITE_TITLE}</a></h2>
+        <div class="hidden md:flex gap-2">
+            <HeaderLink href="/">Home</HeaderLink>
+            <HeaderLink href="/projects">Projects</HeaderLink>
+            <HeaderLink href="/blog">Blog</HeaderLink>
+            <HeaderLink href="/about">About</HeaderLink>
+        </div>
+        <div class="flex md:hidden">
+            <button
+                @click="expanded = ! expanded"
+                id="mobile-menu-button"
+                type="button"
+                aria-label="Open main menu"
+                class="-m-2.5 inline-flex items-center justify-center rounded-md
+                 p-2.5 text-gray-700 z-50"
+            >
+                <span class="sr-only">Open main menu</span>
+                <span class="w-5 h-5 block" x-show="!expanded">
+                    <IconMenu />
+                </span>
+                <span x-show="expanded"> <IconCross /></span>
+            </button>
+        </div>
+    </nav>
+</header>
