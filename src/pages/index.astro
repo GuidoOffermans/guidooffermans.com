@@ -11,7 +11,7 @@ const posts = (await getCollection("blog"))
     .slice(0, 3);
 
 const work = (await getCollection("work")).sort(
-    (a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf(),
+    (a, b) => b.data.startDate.valueOf() - b.data.startDate.valueOf(),
 );
 
 const projects = (await getCollection("projects")).sort(
@@ -82,7 +82,7 @@ const projects = (await getCollection("projects")).sort(
     }
 
     {
-        projects.length ? (
+        posts.length ? (
             <ListingSection
                 class="mt-10 md:mt-20"
                 title="Latest Articles"
