@@ -11,7 +11,7 @@ const posts = (await getCollection("blog"))
     .slice(0, 3);
 
 const work = (await getCollection("work")).sort(
-    (a, b) => b.data.startDate.valueOf() - b.data.startDate.valueOf(),
+    (a, b) => b.data.endDate.valueOf() - b.data.endDate.valueOf(),
 );
 
 const projects = (await getCollection("projects")).sort(
