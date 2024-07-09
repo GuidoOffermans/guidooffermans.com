@@ -1,8 +1,6 @@
 ---
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import Header from "../components/Header.astro";
 import BaseHead from "../components/BaseHead.astro";
-import MobileMenu from "../components/MobileMenu.astro";
 import Footer from "../components/Footer.astro";
 
 import "../styles/main.css";
@@ -12,16 +10,15 @@ import "../styles/main.css";
 <html lang="en" class="h-screen">
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <!--<BaseHead title={title} description={description} />-->
     </head>
     <body
         x-data="{ expanded: false }"
         x-bind:class="expanded ? 'overflow-hidden' : ''"
         class="flex h-full flex-col bg-white text:black dark:bg-go-dark dark:text-white font-sans"
     >
-        <Header />
-        <MobileMenu />
-        <main class="mx-auto flex w-full max-w-3xl grow flex-col px-4">
+        <main
+            class="mr-auto flex w-full max-w-5xl grow flex-col pl-4 pt-2 md:pl-6 md:pt-5"
+        >
             <slot />
         </main>
         <Footer />

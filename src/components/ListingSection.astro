@@ -10,7 +10,7 @@ interface Props {
 const { title, link, linkTitle, class: className, type } = Astro.props;
 ---
 
-<section class:list={[className]}>
+<section class:list={[className, "max-w-3xl"]}>
     <h3
         class="text-xl md:text-3xl font-wght-750 tracking-[0.04em] leading-8 md:leading-9"
     >

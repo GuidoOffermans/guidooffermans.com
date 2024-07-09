@@ -1,6 +1,6 @@
 ---
 title: "ginetta"
-companyName: "Ginatta AG"
+companyName: "Ginetta AG"
 description: "at a branding agency in zürich"
 role: "Full Stack engineer"
 startDate: "Jan 2023"

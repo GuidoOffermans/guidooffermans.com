@@ -7,11 +7,11 @@ import ProjectListing from "../components/ProjectListing.astro";
 import ListingSection from "../components/ListingSection.astro";
 
 const posts = (await getCollection("blog"))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 3);
+    ?.sort((a, b) => new Date(b.data.endDate) - new Date(a.data.endDate))
+    ?.slice(0, 3);
 
 const work = (await getCollection("work")).sort(
-    (a, b) => b.data.endDate.valueOf() - b.data.endDate.valueOf(),
+    (a, b) => new Date(b.data.endDate) - new Date(a.data.endDate),
 );
 
 const projects = (await getCollection("projects")).sort(
