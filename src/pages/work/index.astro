@@ -1,17 +1,19 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
+import { getEmDashCollection } from "emdash";
 import BasicLayout from "../../layouts/BasicLayout.astro";
 import WorkListing from "../../components/WorkListing.astro";
 import ListingSection from "../../components/ListingSection.astro";
 
-const work = (await getCollection("work")).sort(
-    (a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf(),
-);
+const { entries: work, error, cacheHint } = await getEmDashCollection("work", {
+    orderBy: { start_date: "asc" },
+});
+if (error) return new Response("Unable to load work", { status: 500 });
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 ---
 
 <BasicLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
     <ListingSection title="Recent work" type="work">
-        {work?.map((w) => <WorkListing work={w} />)}
+        {work.map((w) => <WorkListing work={w} />)}
     </ListingSection>
 </BasicLayout>

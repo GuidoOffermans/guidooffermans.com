@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "guidooffermans-com",
+  "main": "./src/worker.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "routes": [{ "pattern": "guidooffermans.com", "custom_domain": true }],
+  "workers_dev": true,
+  "preview_urls": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "guidooffermans-com",
+      "database_id": "8b928e19-ed01-4d40-a445-8d5a0e8278df",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "guidooffermans-com-media",
+    },
+  ],
+  // Runs EmDash scheduled publishing
+  "triggers": { "crons": ["* * * * *"] },
+}

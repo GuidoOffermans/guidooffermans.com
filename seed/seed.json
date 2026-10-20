@@ -1,0 +1,144 @@
+{
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "defaultLocale": "en",
+  "meta": {
+    "name": "guidooffermans.com",
+    "description": "Personal site of Guido Offermans",
+    "author": "Guido Offermans"
+  },
+  "settings": {
+    "title": "Guido Offermans",
+    "tagline": "Welcome to my website!"
+  },
+  "collections": [
+    {
+      "slug": "work",
+      "label": "Work",
+      "labelSingular": "Work",
+      "supports": ["drafts", "revisions"],
+      "urlPattern": "/work/{slug}",
+      "routable": true,
+      "titleField": "title",
+      "dateField": "end_date",
+      "admin": { "listColumns": ["company_name", "start_date", "end_date"] },
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true },
+        { "slug": "company_name", "label": "Company name", "type": "string", "required": true },
+        { "slug": "role", "label": "Role", "type": "string", "required": true },
+        { "slug": "description", "label": "Description", "type": "text", "required": true },
+        { "slug": "start_date", "label": "Start date", "type": "datetime", "required": true, "indexed": true },
+        { "slug": "end_date", "label": "End date", "type": "datetime", "required": true, "indexed": true },
+        { "slug": "body", "label": "Body", "type": "portableText" }
+      ]
+    },
+    {
+      "slug": "projects",
+      "label": "Projects",
+      "labelSingular": "Project",
+      "supports": ["drafts", "revisions"],
+      "urlPattern": "/projects/{slug}",
+      "routable": true,
+      "titleField": "title",
+      "dateField": "worked_on",
+      "admin": { "listColumns": ["website", "list_number", "worked_on"] },
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true },
+        { "slug": "website", "label": "Website", "type": "url", "required": true },
+        { "slug": "description", "label": "Description", "type": "text", "required": true },
+        { "slug": "list_number", "label": "List number", "type": "integer", "required": true, "indexed": true },
+        { "slug": "worked_on", "label": "Worked on", "type": "datetime", "required": true },
+        { "slug": "body", "label": "Body", "type": "portableText" }
+      ]
+    },
+    {
+      "slug": "posts",
+      "label": "Blog posts",
+      "labelSingular": "Blog post",
+      "supports": ["drafts", "revisions", "search", "seo"],
+      "urlPattern": "/blog/{slug}",
+      "routable": true,
+      "titleField": "title",
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "description", "label": "Description", "type": "text", "required": true },
+        { "slug": "hero_image", "label": "Hero image", "type": "image" },
+        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true }
+      ]
+    }
+  ],
+  "content": {
+    "work": [
+      {
+        "id": "work-yoast",
+        "slug": "yoast",
+        "status": "published",
+        "data": {
+          "title": "yoast",
+          "company_name": "Yoast BV",
+          "role": "Full Stack engineer",
+          "description": "Lorem ipsum dolor sit amet",
+          "start_date": "2020-01-01T00:00:00Z",
+          "end_date": "2022-12-01T00:00:00Z",
+          "body": []
+        }
+      },
+      {
+        "id": "work-ginetta",
+        "slug": "ginetta",
+        "status": "published",
+        "data": {
+          "title": "ginetta",
+          "company_name": "Ginetta AG",
+          "role": "Full Stack engineer",
+          "description": "at a branding agency in zürich",
+          "start_date": "2023-01-01T00:00:00Z",
+          "end_date": "2023-03-01T00:00:00Z",
+          "body": []
+        }
+      },
+      {
+        "id": "work-mikafi",
+        "slug": "mikafi",
+        "status": "published",
+        "data": {
+          "title": "mikafi",
+          "company_name": "Mikafi AG",
+          "role": "Full Stack engineer",
+          "description": "in a start-up in the coffee roasting industry",
+          "start_date": "2023-06-01T00:00:00Z",
+          "end_date": "2024-06-01T00:00:00Z",
+          "body": []
+        }
+      }
+    ],
+    "projects": [
+      {
+        "id": "project-co-structch",
+        "slug": "co-structch",
+        "status": "published",
+        "data": {
+          "title": "co-struct.ch",
+          "website": "https://co-struct.ch",
+          "description": "portfolio site for a structural engineer bureau based in zurich. together with martina holenstein",
+          "list_number": 1,
+          "worked_on": "2024-01-01T00:00:00Z",
+          "body": []
+        }
+      },
+      {
+        "id": "project-lauragauchcom",
+        "slug": "lauragauchcom",
+        "status": "published",
+        "data": {
+          "title": "lauragauch.com",
+          "website": "https://lauragauch.com",
+          "description": "a swiss chilean photographer. together with martina holenstein",
+          "list_number": 2,
+          "worked_on": "2024-01-01T00:00:00Z",
+          "body": []
+        }
+      }
+    ]
+  }
+}

@@ -1,17 +1,19 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
+import { getEmDashCollection } from "emdash";
 import BasicLayout from "../../layouts/BasicLayout.astro";
 import ProjectListing from "../../components/ProjectListing.astro";
 import ListingSection from "../../components/ListingSection.astro";
 
-const projects = (await getCollection("projects")).sort(
-    (a, b) => a.data.listNumber - b.data.listNumber,
-);
+const { entries: projects, error, cacheHint } = await getEmDashCollection("projects", {
+    orderBy: { list_number: "asc" },
+});
+if (error) return new Response("Unable to load projects", { status: 500 });
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 ---
 
 <BasicLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
     <ListingSection title="Projects" type="project">
-        {projects?.map((project) => <ProjectListing project={project} />)}
+        {projects.map((project) => <ProjectListing project={project} />)}
     </ListingSection>
 </BasicLayout>
