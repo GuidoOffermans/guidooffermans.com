@@ -1,7 +1,7 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { ContentEntry, InferCollectionData } from "emdash";
 interface Props {
-    work: CollectionEntry<"work">;
+    work: ContentEntry<InferCollectionData<"work">>;
 }
 
 import FormattedDate from "./FormattedDate.astro";
@@ -12,11 +12,11 @@ const { work } = Astro.props;
     class="font-mono recursive text-xs md:text-xl tracking-[0.09em] md:tracking-[0.08em] leading-[18px] md:leading-[30px] uppercase"
 >
     <strong class="font-normal text-go-orange">
-        <a href={`/work/${work?.slug}/`}>{work.data.companyName}</a>
+        <a href={`/work/${work.id}/`}>{work.data.company_name}</a>
     </strong>–
     <span>{work.data.role} {work.data.description}.</span>
     <span class="whitespace-normal inline-block tracking-0">
-        <FormattedDate type="work" date={work.data.startDate} />-
-        <FormattedDate type="work" date={work.data.endDate} />
+        <FormattedDate type="work" date={new Date(work.data.start_date)} />-
+        <FormattedDate type="work" date={new Date(work.data.end_date)} />
     </span>
 </li>

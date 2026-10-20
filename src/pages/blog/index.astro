@@ -1,17 +1,19 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
+import { getEmDashCollection } from "emdash";
 import BasicLayout from "../../layouts/BasicLayout.astro";
 import PostListing from "../../components/PostListing.astro";
 import ListingSection from "../../components/ListingSection.astro";
 
-const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const { entries: posts, error, cacheHint } = await getEmDashCollection("posts", {
+    orderBy: { published_at: "desc" },
+});
+if (error) return new Response("Unable to load posts", { status: 500 });
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 ---
 
 <BasicLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
     <ListingSection title="Blog Posts" type="post">
-        {posts?.map((post) => <PostListing post={post} />)}
+        {posts.map((post) => <PostListing post={post} />)}
     </ListingSection>
 </BasicLayout>

@@ -1,8 +1,8 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
-import type { CollectionEntry } from "astro:content";
+import type { ContentEntry, InferCollectionData } from "emdash";
 interface Props {
-    post: CollectionEntry<"blog">;
+    post: ContentEntry<InferCollectionData<"posts">>;
 }
 
 const { post } = Astro.props;
@@ -11,8 +11,8 @@ const { post } = Astro.props;
 <li
     class="font-mono recursive text-xs md:text-xl tracking-[0.09em] md:tracking-[0.08em] leading-[18px] md:leading-[30px] uppercase"
 >
-    <a class="flex gap-6 md:gap-14" href={`/blog/${post.slug}/`}>
-        <span class="flex"><FormattedDate date={post.data.pubDate} /></span>
+    <a class="flex gap-6 md:gap-14" href={`/blog/${post.id}/`}>
+        <span class="flex"><FormattedDate date={post.data.publishedAt ?? post.data.createdAt} /></span>
         <span>{post.data.title}</span>
     </a>
 </li>
