@@ -4,6 +4,9 @@
   "main": "./src/worker.ts",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
+  "routes": [{ "pattern": "guidooffermans.com", "custom_domain": true }],
+  "workers_dev": true,
+  "preview_urls": true,
   "d1_databases": [
     {
       "binding": "DB",
