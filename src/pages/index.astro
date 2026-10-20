@@ -1,22 +1,25 @@
 ---
-import { getCollection } from "astro:content";
+import { getEmDashCollection } from "emdash";
 import BasicLayout from "./../layouts/BasicLayout.astro";
 import PostListing from "../components/PostListing.astro";
 import WorkListing from "../components/WorkListing.astro";
 import ProjectListing from "../components/ProjectListing.astro";
 import ListingSection from "../components/ListingSection.astro";
 
-const posts = (await getCollection("blog"))
-    ?.sort((a, b) => new Date(b.data.endDate) - new Date(a.data.endDate))
-    ?.slice(0, 3);
+const [postsResult, workResult, projectsResult] = await Promise.all([
+    getEmDashCollection("posts", { orderBy: { published_at: "desc" }, limit: 3 }),
+    getEmDashCollection("work", { orderBy: { end_date: "desc" } }),
+    getEmDashCollection("projects", { orderBy: { list_number: "asc" } }),
+]);
 
-const work = (await getCollection("work")).sort(
-    (a, b) => new Date(b.data.endDate) - new Date(a.data.endDate),
-);
+const error = postsResult.error ?? workResult.error ?? projectsResult.error;
+if (error) {
+    return new Response("Unable to load content", { status: 500 });
+}
 
-const projects = (await getCollection("projects")).sort(
-    (a, b) => a.data.listNumber - b.data.listNumber,
-);
+const posts = postsResult.entries;
+const work = workResult.entries;
+const projects = projectsResult.entries;
 ---
 
 <BasicLayout>

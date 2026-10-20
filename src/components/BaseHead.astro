@@ -4,7 +4,7 @@ interface Props {
     description: string;
     image?: string;
 }
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
@@ -61,4 +61,4 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     data-website-id="14ba393a-ae80-40a7-9a3c-63f63cee27f2"></script>
 
 <!-- view transitions -->
-<ViewTransitions />
+<ClientRouter />

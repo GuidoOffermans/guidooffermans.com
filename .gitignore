@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# cloudflare / emdash local state
+.wrangler/
+.dev.vars
+data.db
+uploads/
+.emdash/migrations.json

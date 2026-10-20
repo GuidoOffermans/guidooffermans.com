@@ -1,0 +1,17 @@
+---
+import { decodeSlug, getEmDashEntry } from "emdash";
+import { PortableText } from "emdash/ui";
+import BasicLayout from "../../layouts/BasicLayout.astro";
+
+const slug = decodeSlug(Astro.params.slug);
+if (!slug) return Astro.rewrite("/404");
+
+const { entry, error, cacheHint } = await getEmDashEntry("projects", slug);
+if (error) return new Response("Unable to load entry", { status: 500 });
+if (!entry) return Astro.rewrite("/404");
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+---
+
+<BasicLayout>
+    {entry.data.body && <PortableText value={entry.data.body} />}
+</BasicLayout>
