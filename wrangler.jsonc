@@ -8,6 +8,7 @@
     {
       "binding": "DB",
       "database_name": "guidooffermans-com",
+      "database_id": "8b928e19-ed01-4d40-a445-8d5a0e8278df",
     },
   ],
   "r2_buckets": [
